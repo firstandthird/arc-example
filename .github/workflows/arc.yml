@@ -16,15 +16,8 @@ jobs:
         node-version: [10.x]
 
     steps:
-    - name: Slack notification
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_CHANNEL: lambda-logs # Optional.
-      uses: Ilshidur/action-slack@master
-      with:
-        args: 'Portfolio Build Starting...'
     - uses: actions/checkout@v1
-    - uses: actions/aws/cli@master
+    - uses: chrislennon/action-aws-cli@v1.1
     - name: aws creds
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -50,12 +43,12 @@ jobs:
       if: success() && github.ref == 'refs/heads/master'
       run: |
         npx arc deploy production
-    - name: Slack notification
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_CHANNEL: lambda-logs # Optional.
-      uses: Ilshidur/action-slack@master
+    - name: Slack Notification
+      uses: homoluctus/slatify@master
+      if: always()
       with:
-        args: 'Portfolio Deployed!'
+        type: ${{ job.status }}
+        job_name: '*Arc Deploy*'
+        url: ${{ secrets.SLACK_WEBHOOK }}
 
 
