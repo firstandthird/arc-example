@@ -1,0 +1,21 @@
+#!/bin/bash
+
+CMD=$1
+
+# Runables
+if [[ -z "$CMD" ]]; then
+  npx arc hydrate
+  npx concurrently "arc sandbox" "clientkit dev"
+  exit
+fi
+
+if [[ "$CMD" == "arc" ]]; then
+  npx arc hydrate
+  npx arc sandbox
+  exit
+fi
+
+if [[ "$CMD" == "arc-fast" ]]; then
+  npx arc sandbox
+  exit
+fi
