@@ -1,0 +1,25 @@
+{
+  "name": "example",
+  "description": "",
+  "homepage": "https://github.com/firstandthird/arc-example",
+  "author": "First+Third",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/firstandthird/arc-example.git"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-firstandthird": "^4.3.0",
+    "eslint-plugin-import": "^2.13.0"
+  },
+  "eslintConfig": {
+    "extends": "firstandthird"
+  },
+  "dependencies": {
+    "@architect/architect": "^6.0.10",
+    "@firstandthird/arc-rapptor": "^6.0.1",
+    "arc-macro-lambda-slack": "^3.2.0",
+    "arc-macro-log-subscription": "^1.0.0"
+  }
+}
