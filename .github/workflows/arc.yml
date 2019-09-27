@@ -32,9 +32,9 @@ jobs:
     - name: npm install project and arc
       run: |
         npm install
-    - name: clientkit
+    - name: build
       run: |
-        npx clientkit prod
+        npm run build --if-present
     - name: arc deploy
       if: success() && github.ref != 'refs/heads/master'
       run: |

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CMD=$1
+shift
 
 # Runables
 if [[ -z "$CMD" ]]; then
@@ -18,4 +19,34 @@ fi
 if [[ "$CMD" == "arc-fast" ]]; then
   npx arc sandbox
   exit
+fi
+
+if [[ "$CMD" == "each" ]]; then
+  echo "running $@ for each function"
+  for typeDir in $PWD/src/*/; do
+    for func in $typeDir*/; do
+      echo $func
+      cd $func
+      exec $@
+      cd -
+      echo "------------------------"
+    done
+  done
+fi
+
+if [[ "$CMD" == "npm" ]]; then
+  echo "running npm $@ for each function"
+  for typeDir in $PWD/src/*/; do
+    for func in $typeDir*/; do
+      echo $func
+      cd $func
+      if test -f "$func/package.json"; then
+        npm $@
+      else
+        echo "no package.json in $func. skipping..."
+      fi
+      cd -
+      echo "------------------------"
+    done
+  done
 fi

@@ -3,6 +3,7 @@ example
 
 @http
 get /
+get /cache
 
 @aws
 profile ft
