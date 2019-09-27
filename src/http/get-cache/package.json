@@ -1,3 +1,6 @@
 {
-  "dependencies": {}
+  "dependencies": {
+    "@firstandthird/arc-cache": "^2.2.0",
+    "@firstandthird/arc-rapptor": "^6.0.1"
+  }
 }

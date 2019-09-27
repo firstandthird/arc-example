@@ -20,8 +20,6 @@
   },
   "dependencies": {
     "@architect/architect": "^6.0.10",
-    "@firstandthird/arc-cache": "^2.2.0",
-    "@firstandthird/arc-rapptor": "^6.0.1",
     "arc-macro-lambda-slack": "^3.2.0",
     "arc-macro-log-subscription": "^1.0.0"
   }
